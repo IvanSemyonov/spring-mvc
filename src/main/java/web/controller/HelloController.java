@@ -25,21 +25,4 @@ public class HelloController {
 		return "index";
 	}
 
-	@GetMapping("/cars")
-	public String printCars(@RequestParam(value = "count", defaultValue = "-1", required = false) int count,
-							ModelMap model){
-		List<Car> cars = Arrays.asList(
-				new Car("Honda Accord", 2020, "black"),
-				new Car("Kia Rio", 2016, "red"),
-				new Car("Lada Vesta", 2017, "white"),
-				new Car("Ford Focus", 2010, "blue"),
-				new Car("Kia Optima", 2019, "white"));
-
-		if (count > cars.size() || count < 0){
-			count = cars.size();
-		}
-
-		model.addAttribute("cars", cars.subList(0, count));
-		return "cars";
-	}
 }
